@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-/* import styles from './ProductList'; */
+import styles from './ProductList.scss';
 import Product from './../Product/Product';
 
 const reject = reason =>{
@@ -29,7 +29,7 @@ class ProductList extends React.Component{
         let x = 0;
         console.log(this.state.productos)
         return(
-            <div>
+            <div className={styles.container}>
                 {
                     
                     this.state.productos.map(e => <Product key={x++} 

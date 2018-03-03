@@ -13,7 +13,7 @@ const Features = (props) => (
 
       <div className={styles.features}>
         <Navbar className={styles.todo}>
-          
+      <BotonesLogin updateState={props.updateState} />
           <Navbar.Header>
             <Navbar.Brand>
               <a href="#home">React-Bootstrap</a>

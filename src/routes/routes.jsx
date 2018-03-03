@@ -17,7 +17,7 @@ class Routes extends React.Component{
   render(){
     return(
       <div>
-        <Header user={this.state.user} />
+        <Header user={this.state.user} updateState={this.updateState} />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/features" component={() => <Features user={this.state.user} updateState={this.updateState}/>} />
