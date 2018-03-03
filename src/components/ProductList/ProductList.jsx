@@ -9,7 +9,7 @@ const reject = reason =>{
 class ProductList extends React.Component{
     constructor(props){
         super(props);
-        this.props.promise().then(data=>{
+        this.props.promise(this.props.category).then(data=>{
             this.update(data);
         },reject);
         this.state = {
@@ -17,8 +17,9 @@ class ProductList extends React.Component{
         }
     }
     update(lista){
+        const newList = this.props.cpu(lista);
         this.setState({
-            productos:this.props.cpu(lista)
+            productos:newList
         })
     }
     render(){
@@ -34,6 +35,7 @@ class ProductList extends React.Component{
 }
 ProductList.propTypes = {
     cpu: PropTypes.func.isRequired,
-    promise: PropTypes.func.isRequired
+    promise: PropTypes.func.isRequired,
+    category: PropTypes.string.isRequired
 }
 export default ProductList;

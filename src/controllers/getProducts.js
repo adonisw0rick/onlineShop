@@ -1,7 +1,7 @@
 import $ from 'jquery';
 /* import { resolve } from 'dns'; */
 
-const apiData = {
+const apiDataEbay = {
     key:'danielcl-proyecto-PRD-75d80d3bd-19963953',
     categories:{
         watches:31387,
@@ -10,6 +10,14 @@ const apiData = {
     },
     totalItems:10
 }
+
+const apiDataWalmart = {
+    key:'hs75pqbvydfbyhkft2embzbf',
+    categories:{
+        cameras:'camera'
+    }
+}
+
 
 const processProductEbay = productList =>{
     const listaDefinitiva = [];
@@ -31,52 +39,57 @@ const processProductEbay = productList =>{
         }
         const aux =  {
             price:{
-                original:Original,
+                original:Original, 
                 actual:rebajado
             },
-            name:e.title,
+            name:e.title[0],
             description:e.subtitle,
             img:e.galleryURL,
             id:producto
         }
+        listaDefinitiva.push(aux);
     })
     return listaDefinitiva;
 }
 
-const processProductWalmart = product =>{
-    const aux =  {
-        price:{
-            original:product.msrp,
-            actual:product.salePrice
-        },
-        name:product.name,
-        description:product.shortDescription,
-        img:product.thumbnailImage,
-        id:product.itemId
-    }
-    return aux;
+const processProductWalmart = productList =>{
+    const listaDefinitiva = [];
+    productList.items.map(e => {
+        const aux =  {
+            price:{
+                original:e.msrp,
+                actual:e.salePrice
+            },
+            name:e.name,
+            description:e.shortDescription,
+            img:e.thumbnailImage,
+            id:e.itemId
+        }
+        listaDefinitiva.push(aux);
+    })
+    return listaDefinitiva;
 }
-const walmartPromise = () => new Promise((resolve,reject)=>$.ajax({
+const walmartPromise = category => new Promise((resolve,reject)=>$.ajax({
     url:'http://api.walmartlabs.com/v1/search',
     data:{
-        query:'camera',
+        query:apiDataWalmart.categories[category],
         format:'json',
-        apiKey:'hdzpqc9grjc2nhg8m9e3evd'
+        apiKey:apiDataWalmart.key
     },
     dataType:'JSONP'
 }).done(resolve).fail(reject)
 )
-const ebayPromise = () => new Promise((resolve,reject)=>
+const ebayPromise = category => new Promise((resolve,reject)=>
     $.ajax({
         url:`https://svcs.ebay.com/services/search/FindingService/v1`,
         data:{
-            'SECURITY-APPNAME':apiData.key,
+            'SECURITY-APPNAME':apiDataEbay.key,
             'OPERATION-NAME':'findItemsByCategory',
             'SERVICE-VERSION':'1.0.0',
             'RESPONSE-DATA-FORMAT':'JSON',
             'REST-PAYLOAD':'true',
-            'categoryId':apiData.categories.cameras,
-            'paginationInput.entriesPerPage':apiData.totalItems,
+            'categoryId':apiDataEbay.categories[category],
+            'paginationInput.entriesPerPage':apiDataEbay.totalItems,
             'GLOBAL-ID':'EBAY-US',
             'siteid':'0'
         },
