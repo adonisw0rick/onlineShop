@@ -27,7 +27,7 @@ class ProductList extends React.Component{
         return(
             <div>
                 {
-                    this.state.productos.map(e => <Product key={x++} name={e.name === undefined?"temporal":e.name} />)
+                    this.state.productos.map(e => <Product key={x++} name={e.name === undefined?"":e.name} />)
                 }
             </div>
         )
