@@ -3,8 +3,10 @@ import { NavLink } from "react-router-dom";
 import reactLogo from "./../../img/logo.svg";
 import styles from "./Header.scss";
 
-const Header = () => (
+
+const Header = (props) => (
   <header className={styles.header}>
+    <p> {props.user && props.user.displayName}</p>
     <img className={styles.logo} src={reactLogo} alt="react logo" />
     <h1 className={styles.title}>
       React & Redux <br /> Boilerplate

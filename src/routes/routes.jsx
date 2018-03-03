@@ -5,13 +5,26 @@ import Home from "../containers/Home/Home";
 import Header from "../components/Header/Header";
 import Features from "../components/Features/Features";
 
-export default () => (
-  <div>
-    <Header />
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/features" component={Features} />
-      <Route component={Home} />
-    </Switch>
-  </div>
-);
+class Routes extends React.Component{
+  constructor(props) {
+    super(props)
+    this.state = {
+      user: null
+    }
+  }
+
+  updateState = (state) => this.setState(state)
+  render(){
+    return(
+      <div>
+        <Header user={this.state.user} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/features" component={() => <Features user={this.state.user} updateState={this.updateState}/>} />
+          <Route component={Home} />
+        </Switch>
+      </div>
+    )
+  }
+}
+export default Routes;
