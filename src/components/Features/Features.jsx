@@ -13,21 +13,7 @@ const Features = (props) => (
 
       <div className={styles.features}>
         <Navbar className={styles.todo}>
-          <Navbar.Header>
-            <Navbar.Brand className={styles.brandstyle}>
-              <Google className={styles.brandstyle} />
-            </Navbar.Brand>
-          </Navbar.Header>
-          <Navbar.Header>
-            <Navbar.Brand className={styles.brandstyle}>
-              <Facebook className={styles.brandstyle} />
-            </Navbar.Brand>
-          </Navbar.Header>
-          <Navbar.Header>
-            <Navbar.Brand className={styles.brandstyle}>
-              <Github className={styles.brandstyle} />
-            </Navbar.Brand>
-          </Navbar.Header>
+          
           <Navbar.Header>
             <Navbar.Brand>
               <a href="#home">React-Bootstrap</a>
