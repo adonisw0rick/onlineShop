@@ -10,19 +10,15 @@ class ProductList extends React.Component{
     constructor(props){
         super(props);
         this.props.promise().then(data=>{
-            this.update(data.findItemsByCategoryResponse[0].searchResult[0].item);
+            this.update(data);
         },reject);
         this.state = {
             productos:[{name:''}]
         }
     }
     update(lista){
-        const newList = [];
-        lista.map(e =>
-            newList.push(this.props.cpu(e))
-        );
         this.setState({
-            productos:newList
+            productos:this.props.cpu(lista)
         })
     }
     render(){
@@ -37,7 +33,7 @@ class ProductList extends React.Component{
     }
 }
 ProductList.propTypes = {
-    cpu: PropTypes.element.isRequired,
-    promise: PropTypes.element.isRequired
+    cpu: PropTypes.func.isRequired,
+    promise: PropTypes.func.isRequired
 }
 export default ProductList;

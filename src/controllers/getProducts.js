@@ -11,33 +11,36 @@ const apiData = {
     totalItems:10
 }
 
-const processProductEbay = product =>{
-    let Original;
-    let rebajado;
-    let producto;
-    try {
-        rebajado = parseFloat(product.sellingStatus[0].currentPrice[0].__value__);
-        Original = parseFloat(product.discountPriceInfo[0].originalRetailPrice[0].__value__);
-    } catch (error) {
-       Original = rebajado;
-       rebajado = 0;
-    }
-    try{
-        producto = product.productId[0].__value__;
-    } catch(error){
-        producto = product.itemId
-    }
-    const aux =  {
-        price:{
-            original:Original,
-            actual:rebajado
-        },
-        name:product.title,
-        description:product.subtitle,
-        img:product.galleryURL,
-        id:producto
-    }
-    return aux;
+const processProductEbay = productList =>{
+    const listaDefinitiva = [];
+    productList.findItemsByCategoryResponse[0].searchResult[0].item.map(e=>{
+        let Original;
+        let rebajado;
+        let producto;
+        try {
+            rebajado = parseFloat(e.sellingStatus[0].currentPrice[0].__value__);
+            Original = parseFloat(e.discountPriceInfo[0].originalRetailPrice[0].__value__);
+        } catch (error) {
+           Original = rebajado;
+           rebajado = 0;
+        }
+        try{
+            producto = e.productId[0].__value__;
+        } catch(error){
+            producto = e.itemId
+        }
+        const aux =  {
+            price:{
+                original:Original,
+                actual:rebajado
+            },
+            name:e.title,
+            description:e.subtitle,
+            img:e.galleryURL,
+            id:producto
+        }
+    })
+    return listaDefinitiva;
 }
 
 const processProductWalmart = product =>{
