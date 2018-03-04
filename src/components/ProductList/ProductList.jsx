@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-/* import styles from './ProductList'; */
+import styles from './ProductList.scss';
 import Product from './../Product/Product';
 
 const reject = reason =>{
@@ -28,9 +28,13 @@ class ProductList extends React.Component{
     render(){
         let x = 0;
         return(
-            <div>
+            <div className={styles.products}>
                 {
-                    this.state.productos.map(e => <Product key={x++} name={e.name === undefined?"temporal":e.name} />)
+                    this.state.productos.map(e => <Product key={x++} name={e.name === undefined?"temporal":e.name}
+                    description={e.description === undefined?"no disponible": e.description}
+                    price={!e.price ? "temporal" : e.price.actual}
+                    img = {e.img === undefined ? "no" : e.img}
+                    />)
                 }
             </div>
         )
