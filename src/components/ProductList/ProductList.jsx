@@ -13,7 +13,7 @@ class ProductList extends React.Component{
             this.update(data);
         },reject);
         this.state = {
-            productos:[{name:''}]
+            productos:[]
         }
     }
     update(lista){
@@ -24,16 +24,15 @@ class ProductList extends React.Component{
     }
     render(){
         let x = 0;
-        console.log(this.state.productos)
         return(
             <div className={styles.container}>
                 {
-                    
                     this.state.productos.map(e => <Product key={x++} 
                         price={!e.price ? "temporal" : e.price.actual}
                         name={e.name === undefined ? "temporal" : e.name} 
                         img={e.img === undefined ? "temporal" : e.img}
-                        description={e.description === undefined ? "temporal" : e.description} />)
+                        description={e.description === undefined ? "temporal" : e.description} 
+                        x={e.name === undefined ? 'temporal':''}/>)
                 }
             </div>
         )
