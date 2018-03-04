@@ -14,33 +14,45 @@ class BotonesLogin extends React.Component{
       this.twitterAuth = this.twitterAuth.bind(this);
       this.githubAuth = this.githubAuth.bind(this);
     }
+
+    /**
+     *  Una vez el componente ha sido montado guardamos el estado
+     */
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => this.setState({
       user
     }))
   }
+
+  /** Implementamos el estado actual a updateState */
+
     updateState = (state) => this.setState(state)
     
+
+    /**
+     * googleAuth, facebookAuth, githubAuth, twitterAuth, al pasar el evento llamamos a una funcion
+* contenida por la api de firebase que contenga el proveedor del login de cada plataforma (new firebase.auth.plataforma)
+* y el resultado nos devuelve el objeto user, de este objeto sacamos DisplayName y email.
+     * @param {e} 
+     */
+
     googleAuth(e){
       e.preventDefault();
         const Provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(Provider)
             .then(res => {
               this.props.updateState({ user: res.user })
-                console.log(`${res.user} Has Logged In`)
             }).catch(err => {
-                console.log(`Error: ${err.code} ${err.message}`)
             });
     }
+    
   facebookAuth(e) {
     e.preventDefault();
     const Provider = new firebase.auth.FacebookAuthProvider();
     firebase.auth().signInWithPopup(Provider)
       .then(res => {
         this.props.updateState({user: res.user})
-        console.log(`Has Logged In`, res.user)
       }).catch(err => {
-        console.log(`Error: ${err.code} ${err.message}`)
       });
   }
   githubAuth(e) {
@@ -49,9 +61,7 @@ class BotonesLogin extends React.Component{
     firebase.auth().signInWithPopup(Provider)
       .then(res => {
         this.props.updateState({ user: res.user })
-        console.log(`Has Logged In`, res.user)
       }).catch(err => {
-        console.log(`Error: ${err.code} ${err.message}`)
       });
   }
   twitterAuth(e) {
@@ -60,19 +70,17 @@ class BotonesLogin extends React.Component{
     firebase.auth().signInWithPopup(Provider)
       .then(res => {
         this.props.updateState({ user: res.user })
-        console.log(`Has Logged In`, res.user)
       }).catch(err => {
-        console.log(`Error: ${err.code} ${err.message}`)
       });
   }
+
+  /** Desconexión del cliente de firebase, por tanto de sus cuentas, pasamos el estado de user a null */
     handleLogout(e){
       e.preventDefault();
         firebase.auth().signOut()
         .then(() => {
           this.props.updateState({ user: null })
-            console.log('Disconnected')
         }).catch(err => {
-            console.log(`Error: ${err.code} ${err.message}`)
         });
     }
     render(){

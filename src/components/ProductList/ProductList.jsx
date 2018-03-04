@@ -5,11 +5,16 @@ import Product from './../Product/Product';
 import spinner from './spinner.svg';
 
 const reject = reason =>{
-    console.log(reason);
 }
+/**
+ * Representa un conjunto de productos
+ */
 class ProductList extends React.Component{
     constructor(props){
         super(props);
+        /**
+         * se ejecuta la promesa recibida y actualiza el estado si procede
+         * */        
         this.props.promise(this.props.category).then(data=>{
             this.update(data);
         },reject);
@@ -17,15 +22,27 @@ class ProductList extends React.Component{
             productos:null 
         }
     }
+    /**
+     * Actualiza el estado del componente
+     * @param {object} lista 
+     */
     update(lista){
+        /** 
+         * Se vueleven a procesar los datos y se actualiza el componente
+        */
+        const moneyValue = localStorage.getItem('moneyValue')
         const newList = this.props.cpu(lista);
+        newList.map(e=>{
+            const aux = e;
+            aux.price.original = (parseFloat(e.price.original)*moneyValue).toFixed(0)
+            return aux; 
+        })
         this.setState({
             productos:newList
         })
     }
     render(){
         let x = 0;
-        console.log(this.state.productos)
         return(
             <div className={styles.products}>
                 {(!this.state.productos) ? (<div className={styles.spinner}><img alt="cargando..." src={spinner}/> </div>)
@@ -47,6 +64,10 @@ class ProductList extends React.Component{
         )
     }
 }
+
+/**
+ * Datos necesarios para su representacion(promesa, funcion de procesamiento y categoria)
+ */
 ProductList.propTypes = {
     cpu: PropTypes.func.isRequired,
     promise: PropTypes.func.isRequired,

@@ -50,6 +50,6 @@
     "react/no-unused-state": 0,
     "react/prop-types": 0,
     "prefer-template": 0,
-    "array-callback-return":"warn"
+    "array-callback-return":0
   }
 }

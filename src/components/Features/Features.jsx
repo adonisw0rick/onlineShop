@@ -1,14 +1,11 @@
 import React from "react";
 import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
 import styles from "./Features.scss";
-import Facebook from "../Logins/Facebook";
-import Github from "../Logins/Github";
-import Google from "../Logins/Google";
 
 import BotonesLogin from "../BotonesLogin/BotonesLogin"
 
 
-
+// Caja de arena
 const Features = (props) => (
 
       <div className={styles.features}>

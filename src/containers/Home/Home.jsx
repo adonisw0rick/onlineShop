@@ -4,9 +4,10 @@ import { Tabs, Tab, Row, Col, ListGroup, ListGroupItem, Nav, NavItem, Glyphicon 
 import styles from './About.scss';
 import ProductList from '../../components/ProductList/ProductList';
 import * as getProducts from '../../controllers/getProducts';
-/* import Product from '../../components/Product/Product'; */
 
-
+/** 
+ * Contiene la pagina Home
+*/
 const Home = () => (
     <div className={styles.about}>
         <Tab.Container id="tabs-with-dropdown" defaultActiveKey="first">
