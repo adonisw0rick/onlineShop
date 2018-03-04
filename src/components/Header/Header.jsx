@@ -8,6 +8,7 @@ const Header = (props) => (
   
   <header className={styles.header}>
     <span className={styles.login}>{props.user && props.user.displayName}</span>
+    <span className={styles.login}>{(props.user && props.user.email) && props.user.email}</span>
     <img className={styles.logo} src={reactLogo} alt="react logo" />
     <h1 className={styles.title}>
       React & Suso <br /> OnlineSusoShop

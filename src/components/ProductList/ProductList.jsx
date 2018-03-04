@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ProductList.scss';
 import Product from './../Product/Product';
+import spinner from './spinner.svg';
 
 const reject = reason =>{
     console.log(reason);
@@ -13,7 +14,7 @@ class ProductList extends React.Component{
             this.update(data);
         },reject);
         this.state = {
-            productos:[{name:''}]
+            productos:null 
         }
     }
     update(lista){
@@ -27,14 +28,21 @@ class ProductList extends React.Component{
         console.log(this.state.productos)
         return(
             <div className={styles.products}>
-                {
+                {(!this.state.productos) ? (<div className={styles.spinner}><img alt="cargando..." src={spinner}/> </div>)
+                 : this.state.productos.map(e => <Product key={x++} name={e.name === undefined ? "temporal" : e.name}
+                    description={e.description === undefined ? "no disponible" : e.description}
+                    price={!e.price ? "temporal" : e.price.original}
+                    img={e.img === undefined ? "no" : e.img}
+                    link={e.link === undefined ? "" : e.link}
+                />)}
+                {/* {
                     this.state.productos.map(e => <Product key={x++} name={e.name === undefined?"temporal":e.name}
                     description={e.description === undefined?"no disponible": e.description}
                     price={!e.price ? "temporal" : e.price.original}
                     img = {e.img === undefined ? "no" : e.img}
                     link = {e.link === undefined?"": e.link}
                     />)
-                }
+                } */}
             </div>
         )
     }

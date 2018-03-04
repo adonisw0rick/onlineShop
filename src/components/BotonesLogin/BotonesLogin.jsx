@@ -45,30 +45,14 @@ class BotonesLogin extends React.Component{
   }
   githubAuth(e) {
     e.preventDefault();
-    const provider = new firebase.auth.GithubAuthProvider();
-    provider.addScope('repo');
-    firebase.auth().signInWithPopup(provider).then(function (result) {
-      // This gives you a GitHub Access Token.
-      console.log(result);
-      this.props.updateState({ user: result.user })
-      const token = result.credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
-    }).catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      const credential = error.credential;
-      if (errorCode === 'auth/account-exists-with-different-credential') {
-        alert('You have signed up with a different provider for that email.');
-        // Handle linking here if your app allows it.
-      } else {
-        console.error(error);
-      }
-    });
+    const Provider = new firebase.auth.GithubAuthProvider();
+    firebase.auth().signInWithPopup(Provider)
+      .then(res => {
+        this.props.updateState({ user: res.user })
+        console.log(`Has Logged In`, res.user)
+      }).catch(err => {
+        console.log(`Error: ${err.code} ${err.message}`)
+      });
   }
   twitterAuth(e) {
     e.preventDefault();
