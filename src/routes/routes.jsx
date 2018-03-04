@@ -20,7 +20,7 @@ class Routes extends React.Component{
         <Header user={this.state.user} updateState={this.updateState} />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/features" component={() => <Features user={this.state.user} updateState={this.updateState}/>} />
+          {/* <Route exact path="/features" component={() => <Features user={this.state.user} updateState={this.updateState}/>} /> */}
           <Route component={Home} />
         </Switch>
       </div>

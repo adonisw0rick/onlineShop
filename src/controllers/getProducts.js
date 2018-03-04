@@ -8,13 +8,15 @@ const apiDataEbay = {
         tablets:171485,
         cameras:31388
     },
-    totalItems:10
+    totalItems:15
 }
 
 const apiDataWalmart = {
     key:'hs75pqbvydfbyhkft2embzbf',
     categories:{
-        cameras:'camera'
+        cameras:'camera',
+        watches:'watches',
+        tablets: 'tablets'
     }
 }
 
