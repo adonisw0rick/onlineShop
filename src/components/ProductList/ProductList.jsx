@@ -32,6 +32,7 @@ class ProductList extends React.Component{
                     description={e.description === undefined?"no disponible": e.description}
                     price={!e.price ? "temporal" : e.price.original}
                     img = {e.img === undefined ? "no" : e.img}
+                    link = {e.link === undefined?"": e.link}
                     />)
                 }
             </div>
