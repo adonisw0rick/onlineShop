@@ -13,9 +13,9 @@ const Home = () => (
             <Row className="clearfix">
                 <Col sm={12}>
                     <Nav bsStyle="tabs">
-                        <NavItem eventKey="first">Tablets</NavItem>
+                        <NavItem eventKey="first">Tablets Ebay</NavItem>
                         <NavItem eventKey="second">Cámaras Ebay</NavItem>
-                        <NavItem eventKey="third">Relojes</NavItem>
+                        <NavItem eventKey="third">Relojes Ebay</NavItem>
                         <NavItem eventKey="fourth">Cámaras walmart</NavItem>
                         <NavItem eventKey="five">Relojes walmart</NavItem>
                         <NavItem eventKey="six">Tablets walmart</NavItem>
