@@ -7,6 +7,7 @@ import * as getProducts from '../../controllers/getProducts';
 
 /** 
  * Contiene la pagina Home
+ * Paginada por categoria, hemos utilizado react-bootstrap los elementos Tab
 */
 const Home = () => (
     <div className={styles.about}>
