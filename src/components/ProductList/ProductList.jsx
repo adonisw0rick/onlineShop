@@ -17,7 +17,13 @@ class ProductList extends React.Component{
         }
     }
     update(lista){
+        const moneyValue = localStorage.getItem('moneyValue')
         const newList = this.props.cpu(lista);
+        newList.map(e=>{
+            const aux = e;
+            aux.price.original = (parseFloat(e.price.original)*moneyValue).toFixed(0)
+            return aux; 
+        })
         this.setState({
             productos:newList
         })

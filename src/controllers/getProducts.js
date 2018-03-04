@@ -46,7 +46,7 @@ const processProductEbay = productList =>{
             },
             name:e.title[0],
             description:e.subtitle,
-            img:e.galleryURL,
+            img:e.galleryURL[0],
             id:producto
         }
         listaDefinitiva.push(aux);
@@ -99,4 +99,14 @@ const ebayPromise = category => new Promise((resolve,reject)=>
         dataType: 'JSONP'}).done(resolve).fail(reject)
 )
 
+/* const moneyPromise = () =>new Promise((resolve,reject)=>
+    $.ajax({
+        url:'https://forex.1forge.com/1.0.3/quotes',
+        data:{
+            pairs:'USDEUR',
+            api_key:'unRufelp0lEUJniwMvSVAqwb8bwzwYgj'
+        }
+    }).done(resolve).fail(reject)
+)
+ */
 export {processProductEbay,ebayPromise,processProductWalmart,walmartPromise}
