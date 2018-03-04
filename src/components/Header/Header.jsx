@@ -20,12 +20,12 @@ const Header = (props) => (
           Home{" "}
         </NavLink>
       </li>
-      <li className={styles.item}>
+      {/* <li className={styles.item}>
         <NavLink to="/features" className={styles.link} activeStyle={{ color: "cyan" }}>
           {" "}
           Features{" "}
         </NavLink>
-      </li>
+      </li> */}
     </ul>
   </header>
 );

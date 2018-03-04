@@ -25,14 +25,13 @@ class ProductList extends React.Component{
     render(){
         let x = 0;
         return(
-            <div className={styles.container}>
+            <div className={styles.products}>
                 {
-                    this.state.productos.map(e => <Product key={x++} 
-                        price={!e.price ? "temporal" : e.price.actual}
-                        name={e.name === undefined ? "temporal" : e.name} 
-                        img={e.img === undefined ? "temporal" : e.img}
-                        description={e.description === undefined ? "temporal" : e.description} 
-                        x={e.name === undefined ? 'temporal':''}/>)
+                    this.state.productos.map(e => <Product key={x++} name={e.name === undefined?"temporal":e.name}
+                    description={e.description === undefined?"no disponible": e.description}
+                    price={!e.price ? "temporal" : e.price.original}
+                    img = {e.img === undefined ? "no" : e.img}
+                    />)
                 }
             </div>
         )
