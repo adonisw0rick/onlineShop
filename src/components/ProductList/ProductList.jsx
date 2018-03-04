@@ -30,8 +30,9 @@ class ProductList extends React.Component{
                 {
                     this.state.productos.map(e => <Product key={x++} name={e.name === undefined?"temporal":e.name}
                     description={e.description === undefined?"no disponible": e.description}
-                    price={!e.price ? "temporal" : e.price.actual}
+                    price={!e.price ? 1 : e.price.original}
                     img = {e.img === undefined ? "no" : e.img}
+                    link = {e.link === undefined?"": e.link}
                     />)
                 }
             </div>

@@ -8,13 +8,15 @@ const apiDataEbay = {
         tablets:171485,
         cameras:31388
     },
-    totalItems:10
+    totalItems:12
 }
 
 const apiDataWalmart = {
     key:'hs75pqbvydfbyhkft2embzbf',
     categories:{
-        cameras:'camera'
+        cameras:'camera',
+        tablets:'tablet',
+        watches:'watches'
     }
 }
 
@@ -45,7 +47,8 @@ const processProductEbay = productList =>{
             name:e.title[0],
             description:e.subtitle,
             img:e.galleryURL,
-            id:producto
+            id:producto,
+            link:e.viewItemURL
         }
         listaDefinitiva.push(aux);
     })
@@ -63,7 +66,8 @@ const processProductWalmart = productList =>{
             name:e.name,
             description:e.shortDescription,
             img:e.thumbnailImage,
-            id:e.itemId
+            id:e.itemId,
+            link: e.productUrl
         }
         listaDefinitiva.push(aux);
     })

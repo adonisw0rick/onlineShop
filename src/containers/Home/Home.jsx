@@ -9,7 +9,7 @@ import * as getProducts from '../../controllers/getProducts';
 const Home = () => (
     <div className={styles.about}>
         <ProductList  promise={getProducts.ebayPromise} cpu={getProducts.processProductEbay} category="tablets"/>
-        <ProductList  promise={getProducts.walmartPromise} cpu={getProducts.processProductWalmart} category="cameras"/>
+        <ProductList  promise={getProducts.walmartPromise} cpu={getProducts.processProductWalmart} category="watches"/>
     </div>
 );
 
