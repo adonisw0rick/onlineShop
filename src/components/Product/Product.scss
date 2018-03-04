@@ -1,27 +1,20 @@
-.title{
-    font-size: 1.2em;
-    color: black;
-    font-weight: bolder;
-    text-align: center;
-}
 
-.cam{
-    width: 130px;
-    height: 120px;
+.product{
+    display:block;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius:6px;
+    width:300px;
+    height:300px;
+    margin:5px;
 }
-
-.desc{
-    margin: 1em;
-    padding: 1em;
+img{
+    width:200px;
+    height:200px;
 }
-
-.price{
-    font-style: oblique;
-    color: blue;
-}
-
-.caja{
-    width: 30em;
-    height: 23em;
-    border: 0.3em ridge blue;
+.productname{
+    display:block;
+    border-top:2px solid black;
+    padding-top:0.5em;
+    height:4em;
 }

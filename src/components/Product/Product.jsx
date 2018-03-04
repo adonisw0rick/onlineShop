@@ -3,15 +3,14 @@ import PropTypes from 'prop-types';
 import styles from "./Product.scss";
 
 const Product = props =>(
-    <div className={styles.caja}>
-        <h3 className={styles.title}>{props.name}</h3>
-        <img className={styles.cam} src={props.img} alt={props.description} />
-        <p className={styles.desc}>{props.description}</p>
-        <p className={styles.price}>{props.price}</p>
-        
+    <div className={styles.product}>
+        <img alt="" src={props.img}/><br/><br/>
+        <span className={styles.productname}>{props.name}, <br/><b>{props.price}$</b><br/></span>
     </div>
 )
 Product.propTypes = {
-    name: PropTypes.string.isRequired
+    name: PropTypes.element.isRequired,
+    price: PropTypes.element.isRequired,
+    img: PropTypes.element.isRequired
   };
 export default Product;
