@@ -6,9 +6,15 @@ import Product from './../Product/Product';
 const reject = reason =>{
     console.log(reason);
 }
+/**
+ * Representa un conjunto de productos
+ */
 class ProductList extends React.Component{
     constructor(props){
         super(props);
+        /**
+         * se ejecuta la promesa recibida y actualiza el estado si procede
+         * */        
         this.props.promise(this.props.category).then(data=>{
             this.update(data);
         },reject);
@@ -16,7 +22,14 @@ class ProductList extends React.Component{
             productos:[]
         }
     }
+    /**
+     * Actualiza el estado del componente
+     * @param {object} lista 
+     */
     update(lista){
+        /** 
+         * Se vueleven a procesar los datos y se actualiza el componente
+        */
         const moneyValue = localStorage.getItem('moneyValue')
         const newList = this.props.cpu(lista);
         newList.map(e=>{
@@ -43,6 +56,10 @@ class ProductList extends React.Component{
         )
     }
 }
+
+/**
+ * Datos necesarios para su representacion(promesa, funcion de procesamiento y categoria)
+ */
 ProductList.propTypes = {
     cpu: PropTypes.func.isRequired,
     promise: PropTypes.func.isRequired,
