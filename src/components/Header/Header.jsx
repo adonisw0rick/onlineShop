@@ -2,15 +2,17 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import reactLogo from "./../../img/logo.svg";
 import styles from "./Header.scss";
-
+import BotonesLogin from "../BotonesLogin/BotonesLogin";
 
 const Header = (props) => (
+  
   <header className={styles.header}>
-    <p> {props.user && props.user.displayName}</p>
+    <span className={styles.login}>{props.user && props.user.displayName}</span>
     <img className={styles.logo} src={reactLogo} alt="react logo" />
     <h1 className={styles.title}>
-      React & Redux <br /> Boilerplate
+      React & Suso <br /> OnlineSusoShop
     </h1>
+    <BotonesLogin updateState={props.updateState} />
     <ul className={styles.nav}>
       <li className={styles.item}>
         <NavLink to="/" className={styles.link} exact activeStyle={{color:"cyan"}}>

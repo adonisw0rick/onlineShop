@@ -1,5 +1,6 @@
 import React from "react";
-import firebase from "../../firebase"
+import firebase from "../../firebase";
+import styles from "./BotonesLogin.scss";
 
 class BotonesLogin extends React.Component{
     constructor(props){
@@ -93,11 +94,13 @@ class BotonesLogin extends React.Component{
     render(){
       return(
         <div>
+        <div className={styles.botones}>
           <button onClick={this.handleLogout}>Logout</button>
           <button onClick={this.googleAuth}>Google</button>
           <button onClick={this.facebookAuth}>Facebook</button>
           <button onClick={this.twitterAuth}>Twitter</button>
           <button onClick={this.githubAuth}>GitHub</button>
+        </div>
         </div>
       )
     }

@@ -1,0 +1,21 @@
+.botones{
+    display: flex;
+    flex-flow: row wrap;
+    width: 80%;
+    margin: 0 auto;
+    background-color: black;
+}
+
+.botones button{
+    position: relative;
+    font-size: 1.2em;
+    width: calc(20%);
+    padding: 2px;
+}
+
+.botones button:hover{
+    border: 2px solid blue;
+    margin: 0px;
+    color: blue;
+    padding: 0px;
+}
