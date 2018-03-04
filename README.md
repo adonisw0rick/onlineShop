@@ -773,7 +773,17 @@ $yarn run clear
 
 ## Modified by
 - __[adonisw0rick](https://github.com/adonisw0rick)__
-Modified with react-bootstrap, popper.js, css-loader by modules.
+- __[AyozeM](https://github.com/AyozeM)__
+- __[danielclavijo](https://github.com/danielclavijo)__
+Modified with react-bootstrap, popper.js, css-loader by modules, firebase.
+
+This page would be a template of a typical onlineShop who's selling differents product, on this example we've got ebay and walmart products.
+
+We're using FireBase to login on differents platforms Google, Facebook, Twitter & GitHub.
+
+Taking the products we improve the way to take this using promises.
+
+With react-bootstrap its easy to organize diferents products on tabs.
 
 See also the list of [contributors](https://github.com/luigi055/TDAH-REST-API/contributors) who participated in this project.
 
