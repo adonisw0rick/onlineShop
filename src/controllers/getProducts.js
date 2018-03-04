@@ -17,7 +17,8 @@ const apiDataWalmart = {
         cameras:'camera',
         tablets:'tablet',
         watches:'watches'
-    }
+    },
+    totalItems:12
 }
 
 
@@ -78,7 +79,8 @@ const walmartPromise = category => new Promise((resolve,reject)=>$.ajax({
     data:{
         query:apiDataWalmart.categories[category],
         format:'json',
-        apiKey:apiDataWalmart.key
+        apiKey:apiDataWalmart.key,
+        numItems: apiDataWalmart.totalItems
     },
     dataType:'JSONP'
 }).done(resolve).fail(reject)
