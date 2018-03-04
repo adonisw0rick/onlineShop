@@ -12,6 +12,6 @@ const Product = props =>(
     </div>
 )
 Product.propTypes = {
-    name: PropTypes.element.isRequired
+    name: PropTypes.string.isRequired
   };
 export default Product;

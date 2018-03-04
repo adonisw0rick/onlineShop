@@ -49,6 +49,7 @@
     "prefer-destructuring": 0,
     "react/no-unused-state": 0,
     "react/prop-types": 0,
-    "prefer-template": 0
+    "prefer-template": 0,
+    "array-callback-return":"warn"
   }
 }

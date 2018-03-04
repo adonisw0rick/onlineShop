@@ -9,18 +9,15 @@ const reject = reason =>{
 class ProductList extends React.Component{
     constructor(props){
         super(props);
-        this.props.promise().then(data=>{
-            this.update(data.findItemsByCategoryResponse[0].searchResult[0].item);
+        this.props.promise(this.props.category).then(data=>{
+            this.update(data);
         },reject);
         this.state = {
             productos:[{name:''}]
         }
     }
     update(lista){
-        const newList = [];
-        lista.map(e =>
-            newList.push(this.props.cpu(e))
-        );
+        const newList = this.props.cpu(lista);
         this.setState({
             productos:newList
         })
@@ -43,7 +40,8 @@ class ProductList extends React.Component{
     }
 }
 ProductList.propTypes = {
-    cpu: PropTypes.element.isRequired,
-    promise: PropTypes.element.isRequired
+    cpu: PropTypes.func.isRequired,
+    promise: PropTypes.func.isRequired,
+    category: PropTypes.string.isRequired
 }
 export default ProductList;
